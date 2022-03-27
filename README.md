@@ -19,10 +19,13 @@ The project uses a linux virtual machine scale set for elasticity and a managed 
 
 Terraform state is being stored in azure storage container, to disable it delete the backend block in the providers.tf file.
 
+*Note regarding SSH*: <br>
+The created public security group for the web aplication VMSS grants the user access to the virtual machines by fethcing their current public IP and giving it SSH access in the first inbound rule in the network-security group, this can be changed by adjusting the `source_address_prefix` parameter.
+
 
 ### Instructions
-1. Start by installing all the needed packages for this project(az, terraform, git)
-2. Login to your Azure account in the terminal (can be done with command `az login`)
+1. Start by installing all the needed packages for this project (az, terraform, git)
+2. Login to your Azure account in the terminal - can be done with command `az login`
 3. Clone the repository to an empty folder
 4. Change directory to root-module in that folder
 5. Run command "terraform init" to initialize the project and download all the necessary providers
