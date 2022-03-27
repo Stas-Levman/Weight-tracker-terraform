@@ -4,7 +4,7 @@
 In this project i built a weight tracker web application using Terra form and Azure as my cloud provider,
 Each module in the project has its own read me with descriptions of the variables and the main.tf files have comments for each resource explaining what they do.
 
-**In order to be able to build the infrastructure a custom.rfvars file needs to be used for the apply command**
+**In order to be able to build the infrastructure a custom.tfvars file needs to be used for the apply command**
 
 Instead of a.tfvars file i used azure vault to store and retrieve all my senestive content,
 when using a.tfvars the variable `is-azure-vault-enabled` should be set to false, the code will recognize this and will not to try to promt vault for the sensitive data.
@@ -14,6 +14,10 @@ If you received a custom.tfvars file from me, the variable should already be set
 
 The template uses `custom_data` to provide the virtual machines all the necessary configuration (packages installation, env file creation, and update OKTA URIs via API),
 The script can be found Here.
+
+The project uses a linux virtual machine scale set for elasticity and a managed postgrSQL flexible server.
+
+Terraform state is being stored in azure storage container, to disable it delete the backend block in the providers.tf file.
 
 
 ### Instructions
